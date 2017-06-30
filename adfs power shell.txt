@@ -1,0 +1,21 @@
+https://adfs.adatum.com/federationmetadata/2007-06/federationmetadata.xml
+
+
+Add-ADFSRelyingPartyTrust –Name ‘A. Datum Corporation Test App’ –MetadataURL
+‘https://lon-svr1.adatum.com/AdatumTestApp/federationmetadata/2007-
+06/federationmetadata.xml’
+
+https://lon-svr1.adatum.com/AdatumTestApp/
+
+
+
+ trey
+
+Add-AdfsClaimsProviderTrust –Name ‘Trey Research’ –MetadataUrl
+‘https://adfs.treyresearch.net/federationmetadata/2007-06/federationmetadata.xml’
+
+Add-ADFSRelyingPartyTrust –Name ‘A. Datum Corporation’ –MetadataURL
+
+
+Add-ADFSRelyingPartyTrust –Name ‘A. Datum Corporation’ –MetadataURL
+‘https://adfs.adatum.com/federationmetadata/2007-06/federationmetadata.xml’

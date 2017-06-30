@@ -1,0 +1,25 @@
+ New-NanoServerImage -Edition datacenter -DeploymentType guest -MediaPath D:\ -BasePath .\base  -TargetPath .\NANO1\NANO.VHDX -ComputerName NANO1  -Storage  -Package Microsoft-NanoServer-IIS-Package
+
+Add Nano Server to the domain
+djoin.exe /provision /domain adatum /machine nano-svr1 /savefile .\odjblob
+
+Set-Item WSMan:\localhost\Client\TrustedHosts "192.168.40.X"
+
+$ip = "192.168.40.X"
+
+Enter-PSSession -ComputerName $ip -Credential $ip\Administrator
+
+netsh advfirewall firewall set rule group="File and Printer Sharing" new enable=yes
+Exit-PSSession
+
+net use z: \\172.16.0.X\c$
+
+At the command prompt, type Z:, and then press Enter
+
+copy c:odjblob
+Enter-PSSession -ComputerName $ip -Credential $ip\Administrator
+At the command prompt, type cd\, and then press Enter
+
+djoin /requestodj /loadfile c:\odjblob /windowspath c:\windows /localos
+
+
